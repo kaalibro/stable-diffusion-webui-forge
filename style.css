@@ -335,17 +335,17 @@ input[type="checkbox"].input-accordion-checkbox{
 .generate-box{
     position: relative;
 }
-.gradio-button.generate-box-skip, .gradio-button.generate-box-interrupt, .gradio-button.generate-box-interrupting{
+.gradio-button.generate-box-skip, .gradio-button.generate-box-interrupt{
     position: absolute;
     width: 50%;
     height: 100%;
     display: none;
     background: #b4c0cc;
 }
-.gradio-button.generate-box-skip:hover, .gradio-button.generate-box-interrupt:hover, .gradio-button.generate-box-interrupting:hover{
+.gradio-button.generate-box-skip:hover, .gradio-button.generate-box-interrupt:hover{
     background: #c2cfdb;
 }
-.gradio-button.generate-box-interrupt, .gradio-button.generate-box-interrupting{
+.gradio-button.generate-box-interrupt{
     left: 0;
     border-radius: 0.5rem 0 0 0.5rem;
 }
@@ -1348,7 +1348,7 @@ body.resizing .resize-handle {
     flex-basis: 100%;
 }
 /* Buttons for directories. */
-.extra-network-tree .tree-list-content-dir {}   
+.extra-network-tree .tree-list-content-dir {}
 
 /* Buttons for files. */
 .extra-network-tree .tree-list-item--has-subitem .tree-list--subgroup > li:first-child {
