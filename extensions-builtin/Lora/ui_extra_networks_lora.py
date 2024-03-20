@@ -12,6 +12,8 @@ class ExtraNetworksPageLora(ui_extra_networks.ExtraNetworksPage):
     def __init__(self):
         super().__init__('Lora')
 
+        self.allow_negative_prompt = True
+
     def refresh(self):
         networks.list_available_networks()
 
