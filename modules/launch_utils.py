@@ -93,6 +93,13 @@ def git_tag_a1111():
 def git_tag():
     return 'f' + forge_version.version + '-' + git_tag_a1111()
 
+@lru_cache()
+def git_branch():
+    try:
+        return subprocess.check_output([git, "-C", script_path, "rev-parse", "--abbrev-ref", "HEAD"], shell=False, encoding='utf8').strip()
+    except Exception:
+        return "<none>"
+
 
 def run(command, desc=None, errdesc=None, custom_env=None, live: bool = default_command_live) -> str:
     if desc is not None:
@@ -415,11 +422,13 @@ def prepare_environment():
 
     commit = commit_hash()
     tag = git_tag()
+    branch = git_branch()
     startup_timer.record("git version info")
 
     print(f"Python {sys.version}")
     print(f"Version: {tag}")
     print(f"Commit hash: {commit}")
+    print(f"Branch: {branch}")
 
     if args.reinstall_torch or not is_installed("torch") or not is_installed("torchvision"):
         run(f'"{python}" -m {torch_command}', "Installing torch and torchvision", "Couldn't install torch", live=True)
