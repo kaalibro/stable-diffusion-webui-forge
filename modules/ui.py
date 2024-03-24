@@ -1195,7 +1195,6 @@ def versions_html():
     python_version = ".".join([str(x) for x in sys.version_info[0:3]])
     commit = launch.commit_hash()
     tag = launch.git_tag()
-    branch = launch.git_branch()
 
     if shared.xformers_available:
         import xformers
@@ -1204,7 +1203,7 @@ def versions_html():
         xformers_version = "N/A"
 
     return f"""
-version: <a href="https://github.com/kaalibro/stable-diffusion-webui-forge/commit/{commit}">{tag} ({branch})</a>
+version: <a href="https://github.com/kaalibro/stable-diffusion-webui-forge/commit/{commit}">{tag}</a>
 &#x2000;•&#x2000;
 python: <span title="{sys.version}">{python_version}</span>
 &#x2000;•&#x2000;

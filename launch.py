@@ -8,7 +8,6 @@ dir_repos = launch_utils.dir_repos
 
 commit_hash = launch_utils.commit_hash
 git_tag = launch_utils.git_tag
-git_branch = launch_utils.git_branch
 
 run = launch_utils.run
 is_installed = launch_utils.is_installed
