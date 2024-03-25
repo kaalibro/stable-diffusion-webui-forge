@@ -97,15 +97,14 @@ class Toprow:
         with gr.Row(elem_id=f"{self.id_part}_generate_box", elem_classes=["generate-box"] + (["generate-box-compact"] if self.is_compact else []), render=not self.is_compact) as submit_box:
             self.submit_box = submit_box
 
-            self.interrupt = gr.Button('Interrupt', elem_id=f"{self.id_part}_interrupt", elem_classes="generate-box-interrupt", tooltip="End generation immediately or after completing current batch")
-            self.skip = gr.Button('Skip', elem_id=f"{self.id_part}_skip", elem_classes="generate-box-skip", tooltip="Stop generation of current batch and continues onto next batch")
-            self.interrupting = gr.Button('Interrupting...', elem_id=f"{self.id_part}_interrupting", elem_classes="generate-box-interrupting", tooltip="Interrupting generation...")
-            self.submit = gr.Button('Generate', elem_id=f"{self.id_part}_generate", variant='primary', tooltip="Right click generate forever menu")
+            self.interrupt = gr.Button('Interrupt', elem_id=f"{self.id_part}_interrupt", elem_classes="generate-box-interrupt")
+            self.skip = gr.Button('Skip', elem_id=f"{self.id_part}_skip", elem_classes="generate-box-skip")
+            self.interrupting = gr.Button('Interrupting...', elem_id=f"{self.id_part}_interrupting", elem_classes="generate-box-interrupting")
+            self.submit = gr.Button('Generate', elem_id=f"{self.id_part}_generate", variant='primary')
 
             def interrupt_function():
                 if not shared.state.stopping_generation and shared.state.job_count > 1 and shared.opts.interrupt_after_current:
                     shared.state.stop_generating()
-                    gr.Info("Generation will stop after finishing this image, click again to stop immediately.")
                 else:
                     shared.state.interrupt()
 
@@ -117,13 +116,13 @@ class Toprow:
         with gr.Row(elem_id=f"{self.id_part}_tools"):
             from modules.ui import paste_symbol, clear_prompt_symbol, restore_progress_symbol
 
-            self.paste = ToolButton(value=paste_symbol, elem_id="paste", tooltip="Read generation parameters from prompt or last generation if prompt is empty into user interface.")
+            self.paste = ToolButton(value=paste_symbol, elem_id="paste", tooltip="Apply last generation parameters")
             self.clear_prompt_button = ToolButton(value=clear_prompt_symbol, elem_id=f"{self.id_part}_clear_prompt", tooltip="Clear prompt")
-            self.apply_styles = ToolButton(value=ui_prompt_styles.styles_materialize_symbol, elem_id=f"{self.id_part}_style_apply", tooltip="Apply all selected styles to prompts.")
+            self.apply_styles = ToolButton(value=ui_prompt_styles.styles_materialize_symbol, elem_id=f"{self.id_part}_style_apply", tooltip="Apply selected styles to prompt")
 
             if self.is_img2img:
-                self.button_interrogate = ToolButton('📎', tooltip='Interrogate CLIP - use CLIP neural network to create a text describing the image, and put it into the prompt field', elem_id="interrogate")
-                self.button_deepbooru = ToolButton('📦', tooltip='Interrogate DeepBooru - use DeepBooru neural network to create a text describing the image, and put it into the prompt field', elem_id="deepbooru")
+                self.button_interrogate = ToolButton('📎', tooltip='Describe image with CLIP', elem_id="interrogate")
+                self.button_deepbooru = ToolButton('📦', tooltip='Describe image with DeepBooru', elem_id="deepbooru")
 
             self.restore_progress_button = ToolButton(value=restore_progress_symbol, elem_id=f"{self.id_part}_restore_progress", visible=False, tooltip="Restore progress")
 
