@@ -49,7 +49,6 @@ var titles = {
     "X values": "Values for X axis (separated by comma)",
     "Y values": "Values for Y axis (separated by comma)",
 
-    "None": "No special action",
     "Prompt matrix": "Separate prompts into parts using | character and the script will create a picture for every combination of them (except for the first part, which will be present in all combinations)",
     "X/Y/Z plot": "Create grids with different parameters",
     "Custom code": "Run Python code (must run with \"--allow-code\")",
