@@ -484,7 +484,6 @@ function popup(contents) {
         var close = document.createElement('div');
         close.classList.add('global-popup-close');
         close.addEventListener("click", closePopup);
-        close.title = "Close";
         globalPopup.appendChild(close);
 
         globalPopupInner = document.createElement('div');
